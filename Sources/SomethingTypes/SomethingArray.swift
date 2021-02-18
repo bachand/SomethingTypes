@@ -13,17 +13,16 @@ public struct SomethingArray<Element> {
   }
 
   /// Creates a new `SomethingArray` with one element.
-  static func seed(_ element: Element) -> Self { .init(storage: [element]) }
+  public static func seed(_ element: Element) -> Self { .init(storage: [element]) }
 
   /// Creates a new `SomethingArray` with one element.
-  static func append(_ element: Element) -> Self { .init(storage: [element]) }
+  public static func append(_ element: Element) -> Self { .init(storage: [element]) }
+
+  /// The elements.
+  public var elements: Array<Element> { storage }
 
   /// Adds a new element.
-  func append(_ element: Element) -> Self {
-    var newStorage = storage
-    newStorage.append(element)
-    return .init(storage: newStorage)
-  }
+  public mutating func append(_ element: Element) { storage.append(element) }
 
   private var storage: Array<Element>
 }
