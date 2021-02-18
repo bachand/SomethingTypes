@@ -19,7 +19,7 @@ print(SomethingArray<Int>([])) // nil
 `static func append(_:)` is an alias for `static func seed(_:)` that enables a homogenous code.
 
 ```swift
-var array = SomethingArray.seed("a")
+var array = SomethingArray.append("a")
 array.append("b")
 array.append("c")
 print(array) // ["a","b","c"]
