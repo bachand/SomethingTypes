@@ -25,4 +25,31 @@ final class SomethingArrayTests: XCTestCase {
     array?.append(3)
     XCTAssertEqual(array?.elements, [1,2,3])
   }
+
+  // This verifies conformance to `Sequence`.
+  func test_iteratesCorrectly() {
+    var array = SomethingArray.seed(1)
+    array.append(2)
+    array.append(3)
+
+    var foundElements = Array<Int>()
+    for element in array { foundElements.append(element) }
+
+    XCTAssertEqual(foundElements, [1,2,3])
+  }
+
+  func test_iteratesCorrectlyTwice() {
+    var array = SomethingArray.seed(1)
+    array.append(2)
+    array.append(3)
+
+    var foundElements = Array<Int>()
+    for element in array { foundElements.append(element) }
+
+    var foundElementsAgain = Array<Int>()
+    for element in array { foundElementsAgain.append(element) }
+
+    XCTAssertEqual(foundElements, [1,2,3])
+    XCTAssertEqual(foundElementsAgain, [1,2,3])
+  }
 }
