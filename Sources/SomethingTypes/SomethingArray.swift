@@ -39,7 +39,9 @@ extension SomethingArray: Sequence {
 
   public var underestimatedCount: Int { storage.underestimatedCount }
 
-  public func makeIterator() -> IndexingIterator<Array<Element>> { storage.makeIterator() }
+  public __consuming func makeIterator() -> IndexingIterator<Array<Element>> {
+    storage.makeIterator()
+  }
 
   public func withContiguousStorageIfAvailable<R>(
     _ body: (UnsafeBufferPointer<Self.Element>) throws -> R) rethrows
