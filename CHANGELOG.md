@@ -1,6 +1,6 @@
 # Changelog
 
-## Next version
+## 0.0.2
 
 `SomethingArray` conforms to `Sequence`.
 
