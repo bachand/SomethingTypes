@@ -33,6 +33,7 @@ public struct SomethingArray<Element> {
 
 // MARK: Sequence
 
+// We implement all protocol methods in case `Array` handles them specially.
 extension SomethingArray: Sequence {
 
   /// The type that allows iteration over an array's elements.
@@ -54,6 +55,7 @@ extension SomethingArray: Sequence {
 
 //// MARK: Collection
 
+// We implement all protocol methods in case `Array` handles them specially.
 extension SomethingArray: Collection {
 
   public typealias Index = Int
