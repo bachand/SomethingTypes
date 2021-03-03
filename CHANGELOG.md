@@ -1,5 +1,9 @@
 # Changelog
 
+## Next version
+
+`SomethingArray` conforms to `Collection`.
+
 ## 0.0.2
 
 `SomethingArray` conforms to `Sequence`.
