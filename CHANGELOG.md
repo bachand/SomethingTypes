@@ -1,6 +1,6 @@
 # Changelog
 
-## Next version
+## 0.0.3
 
 `SomethingArray` conforms to `Collection`.
 
