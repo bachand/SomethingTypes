@@ -26,8 +26,8 @@ final class SomethingArrayTests: XCTestCase {
     XCTAssertEqual(array?.elements, [1,2,3])
   }
 
-  // This verifies conformance to `Sequence`.
-  func test_iteratesCorrectly() {
+  // For verifying conformance to `Sequence`.
+  func test_iterating_returnsAllValues() {
     var array = SomethingArray.seed(1)
     array.append(2)
     array.append(3)
@@ -38,7 +38,8 @@ final class SomethingArrayTests: XCTestCase {
     XCTAssertEqual(foundElements, [1,2,3])
   }
 
-  func test_iteratesCorrectlyTwice() {
+  // For verifying conformance to `Sequence`.
+  func test_iterating_returnsAllValues_twice() {
     var array = SomethingArray.seed(1)
     array.append(2)
     array.append(3)
@@ -51,5 +52,52 @@ final class SomethingArrayTests: XCTestCase {
 
     XCTAssertEqual(foundElements, [1,2,3])
     XCTAssertEqual(foundElementsAgain, [1,2,3])
+  }
+
+  // For verifying conformance to `Collection`.
+  func test_subscriptPosition_eachPositionReturnsValue() {
+    var array = SomethingArray.seed("a")
+    array.append("b")
+    array.append("c")
+
+    XCTAssertEqual(array[0], "a")
+    XCTAssertEqual(array[1], "b")
+    XCTAssertEqual(array[2], "c")
+  }
+
+  // For verifying conformance to `Collection`.
+  func test_subscriptBounds_theFullBoundsReturnsAllValues() {
+    var array = SomethingArray.seed("a")
+    array.append("b")
+    array.append("c")
+
+    XCTAssertEqual(array[0...2], ["a", "b", "c"])
+  }
+
+  // For verifying conformance to `Collection`.
+  func test_startIndex_returnsZero() {
+    var array = SomethingArray.seed("a")
+    array.append("b")
+    array.append("c")
+
+    XCTAssertEqual(array.startIndex, 0)
+  }
+
+  // For verifying conformance to `Collection`.
+  func test_endIndex_returnsTheCount() {
+    var array = SomethingArray.seed("a")
+    array.append("b")
+    array.append("c")
+
+    XCTAssertEqual(array.endIndex, 3)
+  }
+
+  // For verifying conformance to `Collection`.
+  func test_indices_returnsAllIndices() {
+    var array = SomethingArray.seed("a")
+    array.append("b")
+    array.append("c")
+
+    XCTAssertEqual(array.indices, .init(0...2))
   }
 }

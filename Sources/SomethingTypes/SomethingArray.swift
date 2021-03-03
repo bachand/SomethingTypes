@@ -33,6 +33,7 @@ public struct SomethingArray<Element> {
 
 // MARK: Sequence
 
+// We implement all protocol methods in case `Array` handles them specially.
 extension SomethingArray: Sequence {
 
   public typealias Iterator = IndexingIterator<Array<Element>>
@@ -49,4 +50,45 @@ extension SomethingArray: Sequence {
   {
     try storage.withContiguousStorageIfAvailable(body)
   }
+}
+
+//// MARK: Collection
+
+// We implement all protocol methods in case `Array` handles them specially.
+extension SomethingArray: Collection {
+
+  public typealias Index = Int
+
+  public var startIndex: Int { storage.startIndex }
+
+  public var endIndex: Int { storage.endIndex }
+
+  public typealias SubSequence = ArraySlice<Element>
+
+  public subscript(position: Self.Index) -> Element { storage[position] }
+
+  public subscript(bounds: Range<Self.Index>) -> Self.SubSequence { storage[bounds] }
+
+  public typealias Indices = Range<Int>
+
+  public var indices: Self.Indices { storage.indices }
+
+  public var isEmpty: Bool { storage.isEmpty }
+
+  public var count: Int { storage.count }
+
+  public func index(_ i: Self.Index, offsetBy distance: Int) -> Self.Index {
+    storage.index(i, offsetBy: distance)
+  }
+  public func index(_ i: Self.Index, offsetBy distance: Int, limitedBy limit: Self.Index) -> Self.Index? {
+    storage.index(i, offsetBy: distance, limitedBy: limit)
+  }
+
+  public func distance(from start: Self.Index, to end: Self.Index) -> Int {
+    storage.distance(from: start, to: end)
+  }
+
+  public func index(after i: Self.Index) -> Self.Index { storage.index(after: i) }
+
+  public func formIndex(after i: inout Self.Index) { storage.formIndex(after: &i) }
 }
