@@ -36,7 +36,6 @@ public struct SomethingArray<Element> {
 // We implement all protocol methods in case `Array` handles them specially.
 extension SomethingArray: Sequence {
 
-  /// The type that allows iteration over an array's elements.
   public typealias Iterator = IndexingIterator<Array<Element>>
 
   public var underestimatedCount: Int { storage.underestimatedCount }
