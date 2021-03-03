@@ -26,8 +26,8 @@ final class SomethingArrayTests: XCTestCase {
     XCTAssertEqual(array?.elements, [1,2,3])
   }
 
-  // This verifies conformance to `Sequence`.
-  func test_iteratesCorrectly() {
+  // For verifying conformance to `Sequence`.
+  func test_iterating_returnsAllValues() {
     var array = SomethingArray.seed(1)
     array.append(2)
     array.append(3)
@@ -38,7 +38,8 @@ final class SomethingArrayTests: XCTestCase {
     XCTAssertEqual(foundElements, [1,2,3])
   }
 
-  func test_iteratesCorrectlyTwice() {
+  // For verifying conformance to `Sequence`.
+  func test_iterating_returnsAllValues_twice() {
     var array = SomethingArray.seed(1)
     array.append(2)
     array.append(3)
